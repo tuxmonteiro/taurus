@@ -202,7 +202,7 @@ class Engine(object):
 
     def _check_modules_list(self):
         finished = False
-        modules = [self.provisioning, self.aggregator] + self.services + self.reporters  # order matters
+        modules = [self.provisioning] + self.services  # order matters
         for module in modules:
             if module in self.started:
                 self.log.debug("Checking %s", module)
@@ -236,7 +236,7 @@ class Engine(object):
         """
         self.log.info("Shutting down...")
         exc_info = None
-        modules = [self.provisioning, self.aggregator] + self.reporters + self.services  # order matters
+        modules = [self.provisioning] + self.services  # order matters
         for module in modules:
             try:
                 if module in self.started:
@@ -257,7 +257,7 @@ class Engine(object):
         self.log.info("Post-processing...")
         # :type exception: BaseException
         exc_info = None
-        modules = [self.provisioning, self.aggregator] + self.reporters + self.services  # order matters
+        modules = [self.provisioning] + self.services  # order matters
         # services are last because of shellexec which is "final-final" action
         for module in modules:
             if module in self.prepared:
