@@ -549,9 +549,10 @@ class JMeterExecutor(ScenarioExecutor, WidgetProvider, FileLister, HavingInstall
         self.__add_listener(log_lst, jmx)
 
     def __add_result_writers(self, jmx):
-        self.kpi_jtl = self.engine.create_artifact("kpi", ".jtl")
-        kpi_lst = jmx.new_kpi_listener(self.kpi_jtl)
-        self.__add_listener(kpi_lst, jmx)
+
+        # self.kpi_jtl = self.engine.create_artifact("kpi", ".jtl")
+        # kpi_lst = jmx.new_kpi_listener(self.kpi_jtl)
+        # self.__add_listener(kpi_lst, jmx)
 
         jtl_log_level = self.execution.get('write-xml-jtl', 'error')
 
