@@ -151,6 +151,8 @@ class Local(Provisioning):
         """
         exc_info = None
         for executor in self.executors:
+            if not executor.has_results():
+                continue
             if executor in self.engine.prepared:
                 self.log.debug("Post-process %s", executor)
                 try:
